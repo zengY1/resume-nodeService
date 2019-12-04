@@ -1,0 +1,19 @@
+module.exports={
+    environment:'dev',
+    database:{
+        dbName:'resume_server',
+        host:'localhost',
+        port:3306,
+        user:'root',
+        password:'root'
+    },
+    tokenConfig:{
+        secretKey:'aaa1a45sdfe5a2sf4essdfs',
+        expiresIn:60*60*24
+    },
+    wx:{
+        appId:'wx189bc51661fe41eb',
+        appSecret:'95ba737383e9ad5a9525880e8eaa11d2',
+        url:'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code'
+    }
+}
