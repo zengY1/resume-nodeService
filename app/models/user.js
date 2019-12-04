@@ -8,7 +8,7 @@ const {
 const {
     LoginExecption
 } = require('../../core/http-expception')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt-nodejs')
 class User extends Model {
     static async verifyUserLogin(mobile, plainPsd) {
         // 查询用户的信息

@@ -16,6 +16,7 @@ ResumeInfo.init({
     city: Sequelize.STRING(8),
     salary:Sequelize.STRING(32),
     evaluation:Sequelize.STRING(2048),
+    address:Sequelize.STRING(128),
     status:Sequelize.STRING(4)
 }, {
     sequelize: sequelize

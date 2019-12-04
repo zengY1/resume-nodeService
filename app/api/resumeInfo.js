@@ -24,6 +24,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         province: body.province,
         city: body.city,
         salary: body.salary,
+        address:body.address,
         status: 1
     }
     const resumeInfo = await ResumeInfo.findOne({
@@ -43,7 +44,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         throw new Success('用户信息更新！')
     } else {
         ResumeInfo.create(options, {
-            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status']
+            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status','address']
         })
         throw new Success('用户信息新建！')
     }
@@ -57,7 +58,7 @@ router.get('/get', new Auth().m, async (ctx) => {
             uid: uid,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary','address']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo
@@ -70,7 +71,7 @@ router.get('/get/byId', async (ctx) => {
             id: body.id,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary','address']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo

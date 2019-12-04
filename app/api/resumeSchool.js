@@ -63,11 +63,11 @@ router.post('/edit', new Auth().m, async (ctx) => {
     }
 })
 // 查uid下的学历信息
-router.get('/list', async (ctx) => {
-    const body = ctx.request.query
+router.get('/list', new Auth().m,async (ctx) => {
+    const uid = ctx.auth.uid
     const schools = await ResumeSchools.findAll({
         where: {
-            uid: body.uid,
+            uid: uid,
             status: 1
         },
         attributes: ['id', 'schoolName', 'projectName', 'schoolOverDate', 'schoolBeginDate', 'record', 'schoolDsc']
@@ -75,8 +75,8 @@ router.get('/list', async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = schools
 })
-// 根据uid查询学历信息
-router.get('/schoolByUid', async (ctx) => {
+// 根据sid查询学历信息
+router.get('/schoolBySid', async (ctx) => {
     const body = ctx.request.query
     const school = await ResumeSchools.findOne({
         where: {
