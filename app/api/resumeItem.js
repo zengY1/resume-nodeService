@@ -32,6 +32,19 @@ router.post('/add', new Auth().m, async (ctx) => {
     }
 
 })
+// 根据uid查所有的项目列表
+router.get('/listByUid',new Auth().m,async(ctx)=>{
+    const uid = ctx.auth.uid
+    const items = await ResumeItems.findAll({
+        where: {
+            uid: uid,
+            status: 1
+        },
+        attributes: ['id', 'cid', 'itemName', 'postName', 'itemBeginDate', 'itemOverDate', 'itemDsc', 'myDivision']
+    })
+    ctx.body = new Success()
+    ctx.body.data = items
+})
 // 公司下的项目的编辑
 router.post('/edit', new Auth().m, async (ctx) => {
     const uid = ctx.auth.uid
@@ -43,12 +56,12 @@ router.post('/edit', new Auth().m, async (ctx) => {
         itemBeginDate: body.itemBeginDate,
         itemDsc: body.itemDsc,
         myDivision: body.myDivision,
+        cid: body.cid,
         status: 1
     }
     const edited = await ResumeItems.update(options, {
         where: {
             id: body.iid,
-            cid: body.cid,
             status: 1,
             uid: uid
         }
@@ -57,7 +70,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         ctx.body = new Success('编辑成功！')
     }
 })
-// 查公司下的全部项目
+// 通过cid查公司下的全部项目
 router.get('/list', async (ctx) => {
     const body = ctx.request.query
     const items = await ResumeItems.findAll({

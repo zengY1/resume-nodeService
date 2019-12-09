@@ -25,9 +25,9 @@ router.post('/add', new Auth().m, async (ctx) => {
         longitude: body.longitude,
         latitude: body.latitude,
         address: body.address,
-        workDsc:body.workDsc,
-        companyDsc:body.companyDsc,
-        status:1
+        workDsc: body.workDsc,
+        companyDsc: body.companyDsc,
+        status: 1
     }
     await Companys.create(options)
 
@@ -39,7 +39,7 @@ router.get('/list', new Auth().m, async (ctx) => {
     const companys = await Companys.findAll({
         where: {
             uid: uid,
-            status:1
+            status: 1
         },
         attributes: ['id', 'companyName', 'postName', 'beginDate', 'overDate']
     })
@@ -52,9 +52,9 @@ router.get('/getCompanyById', async (ctx) => {
     const companyInfo = await Companys.findOne({
         where: {
             id: cid,
-            status:1
+            status: 1
         },
-        attributes: ['id', 'companyName', 'postName', 'beginDate', 'overDate', 'address', 'longitude', 'latitude', 'salary','companyDsc','workDsc']
+        attributes: ['id', 'companyName', 'postName', 'beginDate', 'overDate', 'address', 'longitude', 'latitude', 'salary', 'companyDsc', 'workDsc']
     })
     ctx.body = new Success()
     ctx.body.data = companyInfo
@@ -73,9 +73,9 @@ router.post('/edit', new Auth().m, async (ctx) => {
         longitude: body.longitude,
         latitude: body.latitude,
         address: body.address,
-        workDsc:body.workDsc,
-        companyDsc:body.companyDsc,
-        status:1
+        workDsc: body.workDsc,
+        companyDsc: body.companyDsc,
+        status: 1
     }
     const edited = await Companys.update(options, {
         where: {
@@ -94,11 +94,11 @@ router.post('/delete', new Auth().m, async (ctx) => {
     const options = {
         status: 0
     }
-    const deleted = await Companys.update(options,{
+    const deleted = await Companys.update(options, {
         where: {
             id: body.cid,
             uid: uid,
-            status:1
+            status: 1
         },
         fields: ['status']
     })
