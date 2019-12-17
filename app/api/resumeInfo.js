@@ -53,6 +53,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
 // 当前用户简历信息的获取
 router.get('/get', new Auth().m, async (ctx) => {
     const uid = ctx.auth.uid
+    console.log('uid',uid)
     const resumeInfo = await ResumeInfo.findOne({
         where: {
             uid: uid,

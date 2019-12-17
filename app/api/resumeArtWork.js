@@ -19,7 +19,8 @@ router.post('/add', new Auth().m, async (ctx) => {
         uid: uid,
         workName: body.workName,
         workUrl: body.workUrl,
-        status: 1
+        status: 1,
+        imgType:body.imgType
     }
     const item = await ResumeArtWork.create(options)
     if (item) {
@@ -35,7 +36,8 @@ router.post('/edit', new Auth().m, async (ctx) => {
         uid: uid,
         workName: body.workName,
         workUrl: body.workUrl,
-        status: 1
+        status: 1,
+        imgType:body.imgType
     }
     const edited = await ResumeArtWork.update(options, {
         where: {
@@ -56,7 +58,7 @@ router.get('/list', new Auth().m, async (ctx) => {
             uid: uid,
             status: 1
         },
-        attributes: ['id', 'workName', 'workUrl']
+        attributes: ['id', 'workName', 'workUrl','imgType']
     })
     ctx.body = new Success()
     ctx.body.data = skills
@@ -69,7 +71,7 @@ router.get('/getById', async (ctx) => {
             status: 1,
             id: body.wid
         },
-        attributes: ['id', 'workName', 'workUrl']
+        attributes: ['id', 'workName', 'workUrl','imgType']
     })
     ctx.body = new Success()
     ctx.body.data = skills

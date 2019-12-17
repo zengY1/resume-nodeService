@@ -80,7 +80,7 @@ router.get('/schoolBySid', async (ctx) => {
     const body = ctx.request.query
     const school = await ResumeSchools.findOne({
         where: {
-            id: body.id,
+            id: body.sid,
             status: 1
         },
         attributes: ['id', 'schoolName', 'projectName', 'schoolOverDate', 'schoolBeginDate', 'record', 'schoolDsc','longitude','latitude','address']
