@@ -46,6 +46,19 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = companys
 })
+// 通过分享的uid查询公司的列表
+router.get('/list/share', async (ctx) => {
+    const body = ctx.request.query
+    const companys = await Companys.findAll({
+        where: {
+            uid: body.uid,
+            status: 1
+        },
+        attributes: ['id', 'companyName', 'postName', 'beginDate', 'overDate']
+    })
+    ctx.body = new Success()
+    ctx.body.data = companys
+})
 // 根据公司id 查信息
 router.get('/getCompanyById', async (ctx) => {
     const cid = ctx.request.query.cid

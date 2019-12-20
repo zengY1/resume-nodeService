@@ -63,6 +63,19 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = skills
 })
+// 通过分享的uid下的个人作品
+router.get('/list/share',  async (ctx) => {
+    const body = ctx.request.query
+    const skills = await ResumeArtWork.findAll({
+        where: {
+            uid: body.uid,
+            status: 1
+        },
+        attributes: ['id', 'workName', 'workUrl','imgType']
+    })
+    ctx.body = new Success()
+    ctx.body.data = skills
+})
 // 根据id查个人作品
 router.get('/getById', async (ctx) => {
     const body = ctx.request.query

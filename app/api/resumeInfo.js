@@ -24,7 +24,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         province: body.province,
         city: body.city,
         salary: body.salary,
-        address:body.address,
+        address: body.address,
         status: 1
     }
     const resumeInfo = await ResumeInfo.findOne({
@@ -44,7 +44,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         throw new Success('用户信息更新！')
     } else {
         ResumeInfo.create(options, {
-            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status','address']
+            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status', 'address']
         })
         throw new Success('用户信息新建！')
     }
@@ -53,13 +53,26 @@ router.post('/edit', new Auth().m, async (ctx) => {
 // 当前用户简历信息的获取
 router.get('/get', new Auth().m, async (ctx) => {
     const uid = ctx.auth.uid
-    console.log('uid',uid)
+    console.log('uid', uid)
     const resumeInfo = await ResumeInfo.findOne({
         where: {
             uid: uid,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary','address']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
+    })
+    ctx.body = new Success()
+    ctx.body.data = resumeInfo
+})
+// 通过分享的uid查
+router.get('/get/share', async (ctx) => {
+    const body = ctx.request.query
+    const resumeInfo = await ResumeInfo.findOne({
+        where: {
+            uid: body.uid,
+            status: 1
+        },
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo
@@ -72,7 +85,7 @@ router.get('/get/byId', async (ctx) => {
             id: body.id,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary','address']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo

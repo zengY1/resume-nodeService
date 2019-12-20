@@ -14,6 +14,14 @@ module.exports={
     wx:{
         appId:'wx189bc51661fe41eb',
         appSecret:'95ba737383e9ad5a9525880e8eaa11d2',
-        url:'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code'
+        url:'https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code',
+        codeUrl:'https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=%s',
+        accessUrl:'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=%s&secret=%s'
+    },
+    oss:{
+        region:'oss-cn-hangzhou',
+        accessKeyId:'LTAI4Fnyy7dbmHHDbcbCrXBx',
+        accessKeySecret:'dqqyLg4Fso5guhFK1wrF9vQV2YxsFT',
+        bucket:'wx-resume'
     }
 }

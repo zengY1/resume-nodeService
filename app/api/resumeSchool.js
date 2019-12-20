@@ -75,6 +75,19 @@ router.get('/list', new Auth().m,async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = schools
 })
+// 通过分享的uid下的学历信息
+router.get('/list/share',async (ctx) => {
+    const body = ctx.request.query
+    const schools = await ResumeSchools.findAll({
+        where: {
+            uid: body.uid,
+            status: 1
+        },
+        attributes: ['id', 'schoolName', 'projectName', 'schoolOverDate', 'schoolBeginDate', 'record', 'schoolDsc']
+    })
+    ctx.body = new Success()
+    ctx.body.data = schools
+})
 // 根据sid查询学历信息
 router.get('/schoolBySid', async (ctx) => {
     const body = ctx.request.query

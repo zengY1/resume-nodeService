@@ -63,6 +63,19 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = skills
 })
+// 通过分享的uid下的个人技能
+router.get('/list/share', async (ctx) => {
+    const body = ctx.request.query
+    const skills = await ResumeSkills.findAll({
+        where: {
+            uid: body.uid,
+            status: 1
+        },
+        attributes: ['id', 'skillName', 'skillGrade', 'skillDsc']
+    })
+    ctx.body = new Success()
+    ctx.body.data = skills
+})
 // 根据id查个人技能
 router.get('/getById', async (ctx) => {
     const body = ctx.request.query
