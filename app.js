@@ -1,10 +1,16 @@
 const Koa = require('koa')
 const InitManager = require('./core/init')
 const parser = require('koa-bodyparser')
-const catchError=require('./middlewares/catchError')
+const catchError = require('./middlewares/catchError')
+const cors =require('koa-cors')
 
 const app = new Koa()
-
+app.use(async (ctx, next) => {
+    ctx.set("Access-Control-Allow-Origin", "*")
+    ctx.set("Access-Control-Allow-Headers", "authorization")
+    await next()
+})
+app.use(cors())
 app.use(catchError)
 app.use(parser())
 InitManager.Init(app)
