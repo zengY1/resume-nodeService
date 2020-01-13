@@ -1,13 +1,13 @@
 const Router = require('koa-router')
 const {
     ResumeItems
-} = require('./../models/resume-item')
+} = require('../../models/resume-item')
 const {
     Auth
-} = require('../../middlewares/auth')
+} = require('../../../middlewares/auth')
 const {
     Success
-} = require('../../core/http-expception')
+} = require('../../../core/http-expception')
 const router = new Router({
     prefix: '/item'
 })

@@ -6,14 +6,14 @@
 const Router = require('koa-router')
 const {
     User
-} = require('../models/user')
+} = require('../../models/user')
 const {
     ParamException,
     Success
-} = require('../../core/http-expception')
+} = require('../../../core/http-expception')
 const {
     Auth
-} = require('../../middlewares/auth')
+} = require('../../../middlewares/auth')
 const router = new Router({
     prefix: '/user'
 })

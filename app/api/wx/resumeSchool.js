@@ -1,13 +1,13 @@
 const Router = require('koa-router')
 const {
     ResumeSchools
-} = require('./../models/resume-school')
+} = require('../../models/resume-school')
 const {
     Auth
-} = require('../../middlewares/auth')
+} = require('../../../middlewares/auth')
 const {
     Success
-} = require('../../core/http-expception')
+} = require('../../../core/http-expception')
 const router = new Router({
     prefix: '/school'
 })

@@ -1,19 +1,19 @@
 const Router = require('koa-router')
 const {
     ResumeWxCode
-} = require('./../models/resume-wxCode')
+} = require('../../models/resume-wxCode')
 const {
     Auth
-} = require('../../middlewares/auth')
+} = require('../../../middlewares/auth')
 const {
     Success
-} = require('../../core/http-expception')
+} = require('../../../core/http-expception')
 const {
     wxManager
-} = require('../services/wx')
+} = require('../../services/wx')
 const {
     oSSManager
-}=require('../services/oss')
+}=require('../../services/oss')
 const router = new Router({
     prefix: '/wx'
 })
