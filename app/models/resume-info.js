@@ -12,6 +12,7 @@ ResumeInfo.init({
     sex: Sequelize.STRING(8),
     birthday: Sequelize.STRING(64),
     mobile: Sequelize.STRING(32),
+    email: Sequelize.STRING(32),
     province: Sequelize.STRING(16),
     city: Sequelize.STRING(8),
     salary:Sequelize.STRING(32),

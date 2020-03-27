@@ -24,6 +24,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         province: body.province,
         city: body.city,
         salary: body.salary,
+        email:body.email,
         address: body.address,
         status: 1
     }
@@ -44,7 +45,7 @@ router.post('/edit', new Auth().m, async (ctx) => {
         throw new Success('用户信息更新！')
     } else {
         ResumeInfo.create(options, {
-            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status', 'address']
+            fields: ['realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'uid', 'status', 'address','email']
         })
         throw new Success('用户信息新建！')
     }
@@ -59,7 +60,7 @@ router.get('/get', new Auth().m, async (ctx) => {
             uid: uid,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address','email']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo
@@ -72,7 +73,7 @@ router.get('/get/share', async (ctx) => {
             uid: body.uid,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address','email']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo
@@ -85,7 +86,7 @@ router.get('/get/byId', async (ctx) => {
             id: body.id,
             status: 1
         },
-        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address']
+        attributes: ['id', 'realName', 'sex', 'birthday', 'mobile', 'province', 'city', 'salary', 'address','email']
     })
     ctx.body = new Success()
     ctx.body.data = resumeInfo
@@ -107,6 +108,14 @@ router.post('/delete', new Auth().m, async (ctx) => {
     })
     if (deleted) {
         throw new Success('删除成功')
+    }
+})
+// 获取当前的用户的uid
+router.post('/uid', new Auth().m, async (ctx) => {
+    const uid = ctx.auth.uid
+    ctx.body = new Success()
+    ctx.body.data = {
+        uid: uid
     }
 })
 module.exports = router
