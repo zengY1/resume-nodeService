@@ -75,6 +75,20 @@ router.get('/list', new Auth().m,async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = schools
 })
+// 通过uid下的学历信息
+router.get('/listById', new Auth().m,async (ctx) => {
+    const uid = ctx.auth.uid
+    const body = ctx.request.query
+    const schools = await ResumeSchools.findAll({
+        where: {
+            uid: body.id,
+            status: 1
+        },
+        attributes: ['id', 'schoolName', 'projectName', 'schoolOverDate', 'schoolBeginDate', 'record', 'schoolDsc','latitude','longitude','address']
+    })
+    ctx.body = new Success()
+    ctx.body.data = schools
+})
 // 学校的软删除
 router.post('/delete', new Auth().m, async (ctx) => {
     const body = ctx.request.body

@@ -63,6 +63,20 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = skills
 })
+// 查uid下的个人作品
+router.get('/listById', new Auth().m, async (ctx) => {
+    const uid = ctx.auth.uid
+    const body = ctx.request.query
+    const skills = await ResumeArtWork.findAll({
+        where: {
+            uid: body.id,
+            status: 1
+        },
+        attributes: ['id', 'workName', 'workUrl','imgType']
+    })
+    ctx.body = new Success()
+    ctx.body.data = skills
+})
 // 个人作品的删除
 router.post('/delete', new Auth().m, async (ctx) => {
     const body = ctx.request.body

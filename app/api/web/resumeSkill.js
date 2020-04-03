@@ -63,6 +63,20 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = skills
 })
+// 通过uid下的个人技能
+router.get('/listById', new Auth().m, async (ctx) => {
+    const uid = ctx.auth.uid
+    const body = ctx.request.query
+    const skills = await ResumeSkills.findAll({
+        where: {
+            uid: body.id,
+            status: 1
+        },
+        attributes: ['id', 'skillName', 'skillGrade', 'skillDsc']
+    })
+    ctx.body = new Success()
+    ctx.body.data = skills
+})
 // 个人技能的删除
 router.post('/delete', new Auth().m, async (ctx) => {
     const body = ctx.request.body

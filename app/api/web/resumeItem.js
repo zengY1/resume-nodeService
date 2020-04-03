@@ -45,6 +45,20 @@ router.get('/list', new Auth().m, async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = items
 })
+// 根据uid查所有的项目列表
+router.get('/listById', new Auth().m, async (ctx) => {
+    const uid = ctx.auth.uid
+    const body = ctx.request.query
+    const items = await ResumeItems.findAll({
+        where: {
+            uid: body.id,
+            status: 1
+        },
+        attributes: ['id', 'cid', 'itemName', 'postName', 'itemBeginDate', 'itemOverDate', 'itemDsc', 'myDivision']
+    })
+    ctx.body = new Success()
+    ctx.body.data = items
+})
 // 公司下的项目的编辑
 router.post('/edit', new Auth().m, async (ctx) => {
     const uid = ctx.auth.uid
