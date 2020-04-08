@@ -1,7 +1,7 @@
 const Router = require('koa-router')
 const {
-    User
-} = require('../../../models/user')
+    Companys
+} = require('../../../models/resume-company')
 const {
     Auth
 } = require('../../../../middlewares/auth')
@@ -9,39 +9,37 @@ const {
     Success
 } = require('../../../../core/http-expception')
 const router = new Router({
-    prefix: '/boss/user'
+    prefix: '/boss/company'
 })
 const Op = require('sequelize').Op
-// 获取用户列表
 // 分页查询
 router.get('/list', new Auth().m, async (ctx) => {
     const body = ctx.request.query
     const {
-        userName,
-        mobile,
-        sex
+        companyName,
+        postName,
+        status
     } = body
     let select = {}
-    if (userName) {
-        select['userName'] = {
-            [Op.like]: `%${userName}%`
+    if (companyName) {
+        select['companyName'] = {
+            [Op.like]: `%${companyName}%`
         }
     }
-    if (mobile) {
-        select['mobile'] = {
-            [Op.like]: `%${mobile}%`
+    if (postName) {
+        select['postName'] = {
+            [Op.like]: `%${postName}%`
         }
     }
-    if (sex) {
-        select['sex'] = {
-            [Op.like]: `%${sex}%`
+    if (status) {
+        select['status'] = {
+            [Op.like]: `%${status}%`
         }
     }
     const size = parseInt(body.size || 10)
     const page = parseInt(body.page || 1)
-    const user = await User.findAndCountAll({
+    const user = await Companys.findAndCountAll({
         where: select,
-        attributes: ['id', 'userName', 'mobile', 'sex', 'openid', 'avatarUrl'],
         limit: size,
         offset: (page - 1) * size
     })
@@ -49,5 +47,11 @@ router.get('/list', new Auth().m, async (ctx) => {
     // ctx.body.total=user.length
     ctx.body.data = user
 })
-
+router.get('/get', new Auth().m, async (ctx) => {
+    const user = await Companys.findAll({
+        attributes: ['id', 'companyName']
+    })
+    ctx.body = new Success()
+    ctx.body.data = user
+})
 module.exports = router

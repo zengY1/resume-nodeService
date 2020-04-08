@@ -16,14 +16,16 @@ const Op = require('sequelize').Op
 router.get('/list', new Auth().m, async (ctx) => {
     const body = ctx.request.query
     const {
-        userName,
+        realName,
         mobile,
-        sex
+        sex,
+        province,
+        status
     } = body
     let select = {}
-    if (userName) {
-        select['userName'] = {
-            [Op.like]: `%${userName}%`
+    if (realName) {
+        select['realName'] = {
+            [Op.like]: `%${realName}%`
         }
     }
     if (mobile) {
@@ -31,13 +33,23 @@ router.get('/list', new Auth().m, async (ctx) => {
             [Op.like]: `%${mobile}%`
         }
     }
+    if (province) {
+        select['province'] = {
+            [Op.like]: `%${province}%`
+        }
+    }
+    if (status) {
+        select['status'] = {
+            [Op.like]: `%${status}%`
+        }
+    }
     if (sex) {
         select['sex'] = {
             [Op.like]: `%${sex}%`
         }
     }
-    const size = parseInt(body.size | 10)
-    const page = parseInt(body.page | 1)
+    const size = parseInt(body.size || 10)
+    const page = parseInt(body.page || 1)
     const user = await ResumeInfo.findAndCountAll({
         where: select,
         limit: size,
