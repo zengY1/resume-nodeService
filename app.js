@@ -2,7 +2,9 @@ const Koa = require('koa')
 const InitManager = require('./core/init')
 const parser = require('koa-bodyparser')
 const catchError = require('./middlewares/catchError')
-const cors =require('koa-cors')
+const cors = require('koa-cors')
+const views = require('koa-views')
+const render=require('koa-art-template')
 
 const app = new Koa()
 app.use(async (ctx, next) => {
@@ -10,6 +12,11 @@ app.use(async (ctx, next) => {
     ctx.set("Access-Control-Allow-Headers", "authorization")
     await next()
 })
+app.use(views('views', {
+    map: {
+        html: 'ejs'
+    }
+}))
 app.use(cors())
 app.use(catchError)
 app.use(parser())

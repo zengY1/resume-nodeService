@@ -8,6 +8,7 @@ const {
 const {
     Success
 } = require('../../../core/http-expception')
+
 const router = new Router({
     prefix: '/web/info'
 })

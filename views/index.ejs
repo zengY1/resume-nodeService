@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="info">
+        <div class="info-name"><%= info.realName%></div>
+        <div class="info-list">
+            <div class="list-item"><%= info.sex==0?'男':'女'%></div>
+            <div class="list-item"><%= info.age%>岁</div>
+            <div class="list-item"><%= info.record%></div>
+            <div class="list-item"><%= info.mobile%></div>
+        </div>
+    </div>
+    <div class="template">
+        <div class="template-label">求职意向</div>
+        <div class="template-list">
+            <div class="school-list">
+                <div class="school-list-item"><%= info.city%></div>
+                <div class="school-list-item"><%= info.workOld%>年</div>
+                <div class="school-list-item"><%= info.province%></div>
+                <div class="school-list-item"><%= info.salary%></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

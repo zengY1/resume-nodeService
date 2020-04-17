@@ -1,0 +1,52 @@
+/* 公共样式 */
+.template {
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+}
+
+.template-label {
+    font-size: 14px;
+    color: #4e4e4e;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.template-list {
+    padding-top: 10px;
+}
+
+
+/* 个人信息模块 */
+.info {
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+}
+
+.info-name {
+    font-size: 32px;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+}
+
+.list-item {
+    margin-right: 40px;
+}
+
+/* 求职意向 */
+.school-list {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 14px;
+}
+
+.school-list-item {
+    margin-right: 40px;
+}
