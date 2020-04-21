@@ -1,14 +1,22 @@
 /* 公共样式 */
+html {
+    color: #333;
+}
+
+body {
+    font:12px/1.5 arial,STHeiti,'Microsoft YaHei',\5b8b\4f53;
+}
+
 .template {
     padding: 10px 20px 10px 20px;
     border-bottom: 1px solid rgba(7, 17, 27, 0.1);
 }
 
 .template-label {
-    font-size: 14px;
+    font-size: 14pt;
     color: #4e4e4e;
     font-weight: 700;
-    margin: 10px 0;
+    margin: 10px 0 0;
 }
 
 .template-list {
@@ -23,16 +31,19 @@
 }
 
 .info-name {
-    font-size: 32px;
+    font-size: 24pt;
     color: #000;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .info-list {
     display: flex;
     flex-direction: row;
-    font-size: 16px;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    font-weight: 700;
 }
 
 .list-item {
@@ -40,13 +51,113 @@
 }
 
 /* 求职意向 */
-.school-list {
+.want-list {
     display: flex;
     align-items: center;
-    color: #333;
-    font-size: 14px;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    font-weight: 700;
 }
 
-.school-list-item {
+.want-list-item {
     margin-right: 40px;
+}
+
+/* 教育经历 */
+.school-list {}
+
+.school-list-item {
+    display: flex;
+    flex-direction: row;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.item-right-40 {
+    margin-right: 40px;
+}
+
+/* 工作经历 */
+.companys-list {}
+
+.companys-list-item {
+    display: flex;
+    flex-direction: row;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.companys-list-desc {
+    font-size: 10.5pt;
+    line-height: 1.5;
+}
+
+/* 项目经历 */
+.items-list {}
+
+.items-margin {
+    margin: 5px 0;
+}
+
+.items-list-item {
+    display: flex;
+    flex-direction: row;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+.items-list-desc {
+    font-size: 10.5pt;
+    line-height: 1.5;
+}
+
+/* 个人技能 */
+.skills {
+    margin-left: 30px;
+}
+
+.skills-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.skills-icon {
+    width: 1px;
+    height: 1px;
+    border: 2px solid black;
+    border-radius: 50%;
+    background-color: black;
+    margin-right: 2px;
+}
+
+.skills-list-item {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 个人作品 */
+.arts-list {
+    display: flex;
+    font-size: 10.5pt;
+    line-height: 1.5;
+}
+
+/* 小程序码 */
+.imgcard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.img-dsc {
+    font-size: 12px;
+    color: rgba(7, 17, 27, 0.5);
 }

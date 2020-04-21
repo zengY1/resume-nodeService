@@ -1,24 +1,22 @@
 const puppeteer = require('puppeteer')
-
 class PDF {
     constructor() {
 
     }
     static async create(pdf_string) {
-
         const browser = await puppeteer.launch({
-            args: ['--disable-dev-shm-usage', '--no-sandbox']
+            args: ['--disable-dev-shm-usage', '--no-sandbox'],
+            headless:true,
+            executablePath:'/opt/google/chrome/chrome'
         });
         const page = await browser.newPage();
-        // await page.goto('https://example.com');
-
         await page.setContent(pdf_string)
         await page.addStyleTag({
             path: 'views/index.css'
         })
         await page.pdf({
             format: 'A4',
-            path: 'views/1.pdf',
+            path: 'views/myResume.pdf',
             margin:{
                 top:80,
                 bottom:80,

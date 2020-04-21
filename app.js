@@ -4,7 +4,6 @@ const parser = require('koa-bodyparser')
 const catchError = require('./middlewares/catchError')
 const cors = require('koa-cors')
 const views = require('koa-views')
-const render=require('koa-art-template')
 
 const app = new Koa()
 app.use(async (ctx, next) => {

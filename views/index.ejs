@@ -21,14 +21,125 @@
     <div class="template">
         <div class="template-label">求职意向</div>
         <div class="template-list">
-            <div class="school-list">
-                <div class="school-list-item"><%= info.city%></div>
-                <div class="school-list-item"><%= info.workOld%>年</div>
-                <div class="school-list-item"><%= info.province%></div>
-                <div class="school-list-item"><%= info.salary%></div>
+            <div class="want-list">
+                <div class="want-list-item"><%= info.city%></div>
+                <div class="want-list-item"><%= info.workOld%>年</div>
+                <div class="want-list-item"><%= info.province%></div>
+                <div class="want-list-item"><%= info.salary%></div>
             </div>
         </div>
     </div>
+    <% if(companys.length>0){%>
+    <div class="template">
+        <div class="template-label">教育经历</div>
+        <div class="template-list">
+            <div class="school-list">
+                <% for(var i=0;i<school.length;i++){%>
+                <div class="school-list-item">
+                    <div class="item-right-40">
+                        <%= school[i].schoolBeginDate.slice(0,7)%>~<%= school[i].schoolOverDate.slice(0,7)%></div>
+                    <div class="item-right-40"><%=school[i].record%></div>
+                    <div class="item-right-40"><%=school[i].schoolName%></div>
+                    <div class="item-right-40"><%=school[i].projectName%></div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <%}%>
+                <% if(companys.length>0){%>
+                <div class="template">
+                    <div class="template-label">工作经历</div>
+                    <div class="template-list">
+                        <div class="companys-list">
+                            <% for(var i=0;i<companys.length;i++){%>
+                            <div>
+                                <div class="companys-list-item">
+                                    <div class="item-right-40">
+                                        <%= companys[i].beginDate.slice(0,7)%>~<%= companys[i].overDate.slice(0,7)%>
+                                    </div>
+                                    <div class="item-right-40"><%=companys[i].companyName%></div>
+                                    <div class="item-right-40"><%=companys[i].postName%></div>
+                                    <div class="item-right-40"><%=companys[i].salary%></div>
+                                </div>
+                                <div class="companys-list-desc">
+                                    <%=companys[i].workDsc%>
+                                </div>
+                            </div>
+                            <%}%>
+            </div>
+        </div>
+    </div>
+    <%}%>
+                            <% if(items.length>0){%>
+                            <div class="template">
+                                <div class="template-label">项目经历</div>
+                                <div class="template-list">
+                                    <div class="items-list">
+                                        <% for(var i=0;i<items.length;i++){%>
+                                        <div class="items-margin">
+                                            <div class="items-list-item">
+                                                <div class="item-right-40">
+                                                    <%= items[i].itemBeginDate.slice(0,7)%>~<%= items[i].itemOverDate.slice(0,7)%>
+                                                </div>
+                                                <div class="item-right-40"><%=items[i].itemName%></div>
+                                                <div class="item-right-40"><%=items[i].postName%></div>
+                                            </div>
+                                            <div class="items-list-desc">
+                                                <div>项目简介：<%=items[i].itemDsc%></div>
+                                                <div>我的分工：<%=items[i].myDivision%></div>
+                                            </div>
+                                        </div>
+                                        <%}%>
+            </div>
+        </div>
+    </div>
+    <%}%>
+                                        <% if(skills.length>0){%>
+                                        <div class="template">
+                                            <div class="template-label">个人技能</div>
+                                            <div class="template-list">
+                                                <div class="skills">
+                                                    <% for(var i=0;i<skills.length;i++){%>
+                                                    <div class="skills-list">
+                                                        <div class="skills-icon"></div>
+                                                        <div class="skills-list-item">
+                                                            <%=skills[i].skillGrade%>
+                                                            <%=skills[i].skillName%>:
+                                                            <div class="skills-list-dsc">
+                                                                <%=skills[i].skillDsc%>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <%}%>
+            </div>
+        </div>
+    </div>
+    <%}%>
+                                                    <% if(arts.length>0){%>
+                                                    <div class="template">
+                                                        <div class="template-label">个人作品</div>
+                                                        <div class="template-list">
+                                                            <div class="arts">
+                                                                <% for(var i=0;i<arts.length;i++){%>
+                                                                <div class="arts-list">
+                                                                    <div class="arts-label"><%=arts[i].workName%>:</div>
+                                                                    <div class="arts-url">
+                                                                        <%=arts[i].workUrl%>
+                                                                    </div>
+                                                                </div>
+                                                                <%}%>
+            </div>
+        </div>
+    </div>
+    <%}%>
+                                                                <div class="imgcard">
+                                                                    <div>
+                                                                        <img src=<%= codeSrc%>
+                                                                            style="width:50px;height:50px;" />
+                                                                    </div>
+                                                                    <div class="img-dsc">扫描二维码 查看我的简历</div>
+                                                                </div>
 </body>
 
 </html>
