@@ -5,7 +5,7 @@ module.exports={
         host:'localhost',
         port:3306,
         user:'root',
-        password:'root123456'
+        password:'root'
     },
     tokenConfig:{
         secretKey:'aaa1a45sdfe5a2sf4essdfs',

@@ -1,8 +1,5 @@
 const Router = require('koa-router')
 const {
-    ResumeWxCode
-} = require('../../models/resume-wxCode')
-const {
     Auth
 } = require('../../../middlewares/auth')
 const {
