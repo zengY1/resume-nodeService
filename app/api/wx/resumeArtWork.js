@@ -94,11 +94,13 @@ router.post('/delete', new Auth().m, async (ctx) => {
     const body = ctx.request.body
     const uid = ctx.auth.uid
     const wid = parseInt(body.wid)
+    const options={status:0}
 
-    const deleted = await ResumeArtWork.destroy( {
+    const deleted = await ResumeArtWork.destroy(options, {
         where: {
             id: wid,
-            uid: uid
+            uid: uid,
+            status:1
         }
     })
 

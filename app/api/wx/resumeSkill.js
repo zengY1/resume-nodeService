@@ -89,16 +89,18 @@ router.get('/getById', async (ctx) => {
     ctx.body = new Success()
     ctx.body.data = skills
 })
-// 个人技能的删除
+// 个人技能的软删除
 router.post('/delete', new Auth().m, async (ctx) => {
     const body = ctx.request.body
     const uid = ctx.auth.uid
     const sid = parseInt(body.sid)
+    const options={status:0}
 
-    const deleted = await ResumeSkills.destroy( {
+    const deleted = await ResumeSkills.update(options, {
         where: {
             id: sid,
-            uid: uid
+            uid: uid,
+            status:1
         }
     })
 
