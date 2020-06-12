@@ -102,7 +102,11 @@ router.get('/pdf', new Auth().m, async (ctx) => {
         school: schools,
         companys: companys,
         skills: skills,
-        items: items,
+        items: items.sort(
+            (a, b) =>
+              new Date(b.itemBeginDate).getTime() -
+              new Date(a.itemBeginDate).getTime()
+          ),
         arts: arts,
         codeSrc: t1
     }

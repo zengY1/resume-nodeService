@@ -100,46 +100,50 @@
                                             <div class="template-label">个人技能</div>
                                             <div class="template-list">
                                                 <div class="skills">
-                                                    <% for(var i=0;i<skills.length;i++){%>
-                                                    <div class="skills-list">
-                                                        <div class="skills-icon"></div>
-                                                        <div class="skills-list-item">
-                                                            <%=skills[i].skillGrade%>
-                                                            <%=skills[i].skillName%>:
-                                                            <div class="skills-list-dsc">
-                                                                <%=skills[i].skillDsc%>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <%}%>
+                                                    <ul>
+                                                        <% for(var i=0;i<skills.length;i++){%>
+                                                        <li>
+                                                            
+                                                                <div>
+                                                                    <%=skills[i].skillGrade%>
+                                                                    <%=skills[i].skillName%>:
+                                                                    <span>&nbsp;
+                                                                        <%=skills[i].skillDsc%>
+                                                                    </span>
+                                                                </div>
+                                                           
+                                                        </li>
+                                                        <%}%>
+                                                </ul>
             </div>
         </div>
     </div>
     <%}%>
-                                                    <% if(arts.length>0){%>
-                                                    <div class="template">
-                                                        <div class="template-label">个人作品</div>
-                                                        <div class="template-list">
-                                                            <div class="arts">
-                                                                <% for(var i=0;i<arts.length;i++){%>
-                                                                <div class="arts-list">
-                                                                    <div class="arts-label"><%=arts[i].workName%>:</div>
-                                                                    <div class="arts-url">
-                                                                        <%=arts[i].workUrl%>
+                                                        <% if(arts.length>0){%>
+                                                        <div class="template">
+                                                            <div class="template-label">个人作品</div>
+                                                            <div class="template-list">
+                                                                <div class="arts">
+                                                                    <% for(var i=0;i<arts.length;i++){%>
+                                                                    <div class="arts-list">
+                                                                        <div class="arts-label"><%=arts[i].workName%>:
+                                                                        </div>
+                                                                        <div class="arts-url">
+                                                                            <%=arts[i].workUrl%>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <%}%>
+                                                                    <%}%>
             </div>
         </div>
     </div>
     <%}%>
-                                                                <div class="imgcard">
-                                                                    <div>
-                                                                        <img src=<%= codeSrc%>
-                                                                            style="width:50px;height:50px;" />
+                                                                    <div class="imgcard">
+                                                                        <div>
+                                                                            <img src=<%= codeSrc%>
+                                                                                style="width:50px;height:50px;" />
+                                                                        </div>
+                                                                        <div class="img-dsc">扫描二维码 查看我的简历</div>
                                                                     </div>
-                                                                    <div class="img-dsc">扫描二维码 查看我的简历</div>
-                                                                </div>
 </body>
 
 </html>

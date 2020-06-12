@@ -96,7 +96,7 @@ router.post('/delete', new Auth().m, async (ctx) => {
     const wid = parseInt(body.wid)
     const options={status:0}
 
-    const deleted = await ResumeArtWork.destroy(options, {
+    const deleted = await ResumeArtWork.update(options, {
         where: {
             id: wid,
             uid: uid,
